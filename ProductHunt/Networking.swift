@@ -106,26 +106,73 @@ extension Product: Decodable {
     }
 }
 
+
+
+
+//enum Route {
+//    case post
+//    case comments(id: String)
+//
+//    func path() -> String {
+//        switch self {
+//        case .post:
+//            return "/posts"
+//        case .comments:
+//            return "/comments/"
+//        }
+//
+//    }
+//
+//    func urlParameters() -> [String: String] {
+//        switch self {
+//        case .post:
+//            return [:]
+//        case let .comments(id):
+//            return ["search[post_id]": "\(id)"]
+//        }
+//    }
+//
+//    func headers() -> [String: String] {
+//        return ["Authorization": "Bearer 5591fd155cf2db08e3657d05d5775c4ccf7a9d6f71c60ddacdb9ea7d9c4b5f73"]
+//    }
+//
+//}
+
+//class Networking {
+//
+//    static let instance = Networking()
+//
+//    let baseURL = "https://api.producthunt.com/v1"
+//    let session = URLSession.shared
+//
+//
+//    func fetch(route: Route,  completion: @escaping (Data) -> Void) {
+//        let fullPath = baseURL.appending(route.path())
+//        var url = URL(string: fullPath)!
+//        url = url.appendingQueryParameters(route.urlParameters())
+//
+//        var request = URLRequest(url: url)
+//        request.allHTTPHeaderFields = route.headers()
+//
+//
+//        session.dataTask(with: request) { (data, res, err) in
+//            guard let data = data else {return}
+//
+//            completion(data)
+//        }
+//    }
+//
+//}
 enum Route {
     case post
-    case comments(id: String)
+    case comment(postId: String)
     
     func path() -> String {
         switch self {
         case .post:
-            return "/posts"
-        case .comments:
-            return "/comments/"
-        }
-      
-    }
-    
-    func urlParameters() -> [String: String] {
-        switch self {
-        case .post:
-            return [:]
-        case let .comments(id):
-            return ["search[post_id]": "\(id)"]
+            return "posts"
+        case .comment:
+            return "comments"
         }
     }
     
@@ -133,50 +180,57 @@ enum Route {
         return ["Authorization": "Bearer 5591fd155cf2db08e3657d05d5775c4ccf7a9d6f71c60ddacdb9ea7d9c4b5f73"]
     }
     
+    func urlParameters() -> [String: String] {
+        switch self {
+        case .post:
+            return [:]
+        case let .comment(postId):
+            return ["search[post_id]": postId]
+        }
+    }
 }
 
+
 class Networking {
-    
     static let instance = Networking()
     
-    let baseURL = "https://api.producthunt.com/v1"
+    let baseURL = "https://api.producthunt.com/v1/"
     let session = URLSession.shared
     
-    
-    func fetch(route: Route,  completion: @escaping (Data) -> Void) {
-        let fullPath = baseURL.appending(route.path())
-        var url = URL(string: fullPath)!
+    func fetch(route: Route, model: Decodable, completion: @escaping (Data) -> Void) {
+        let fullUrlString = baseURL.appending(route.path())
+        
+        var url = URL(string: fullUrlString)!
         url = url.appendingQueryParameters(route.urlParameters())
         
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = route.headers()
         
-        
         session.dataTask(with: request) { (data, res, err) in
             guard let data = data else {return}
+            
+            let decodeModel = JSONDecoder()
+            let model = decodeModel.decode(type(of: model), from: data)
             
             completion(data)
         }
     }
-    
 }
 
 extension URL {
+    
     func appendingQueryParameters(_ parametersDictionary : Dictionary<String, String>) -> URL {
-        let URLString : String = String(format: "%@?%@", self.absoluteString, parametersDictionary.queryParameters)
-        
         
         let net = Networking.instance
-        
         net.fetch(route: Route.post) { (data) in
-            // Parsing
+            
         }
         
-        net.fetch(route: Route.comments(id: "2")) { (data) in
-            // Parsing
-            let decoder =  JSONDecoder()
-            //decoder.decode(ProductList.self, from: <#T##Data#>)
+        net.fetch(route: Route.comment(postId: "1")) { (data) in
+            
         }
+        
+        let URLString : String = String(format: "%@?%@", self.absoluteString, parametersDictionary.queryParameters)
         
         return URL(string: URLString)!
     }
