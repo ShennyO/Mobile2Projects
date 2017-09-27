@@ -64,7 +64,7 @@ struct Product {
     
 }
 
-struct productList: Decodable {
+struct ProductList: Decodable {
     var posts: [Product]
 }
 
@@ -106,120 +106,57 @@ extension Product: Decodable {
     }
 }
 
-class Networking {
+enum Route {
+    case post
+    case comments(id: String)
     
-    static func getComments(id: Int, completion: @escaping ([Comment]) -> Void) {
-        var commentsURL = URL(string: "https://api.producthunt.com/v1/comments")
-        
-        let urlParams = ["search[post_id":String(describing:id)]
-        
-        commentsURL?.appendingQueryParameters(urlParams)
-        
-        //let dispatch = DispatchGroup()
-        
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: commentsURL!)
-        
-        request.httpMethod = "GET"
-        
-        
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer 5591fd155cf2db08e3657d05d5775c4ccf7a9d6f71c60ddacdb9ea7d9c4b5f73", forHTTPHeaderField: "Authorization")
-        request.setValue("api.producthunt.com", forHTTPHeaderField: "Host")
-        
-        var comments = [String]()
-        
-        //dispatch.enter()
-        
-        var commentz = [Comment]()
-        session.dataTask(with: request) { (data, resp, err) in
-        
-
-            if let data = data {
-                
-                let productHuntComments = try? JSONDecoder().decode(commentList.self, from: data)
-                
-                let commentsList = productHuntComments?.comments
-                
-                commentz = commentsList!
-                
-                DispatchQueue.main.async {
-                    completion(commentz)
-                }
-                
-                
-                
-                
-                //dispatch.leave()
-            } else {
-                //dispatch.leave()
-            }
-            
-            
-        }.resume()
-        
-        
+    func path() -> String {
+        switch self {
+        case .post:
+            return "/posts"
+        case .comments:
+            return "/comments/"
+        }
+      
     }
     
-   
+    func urlParameters() -> [String: String] {
+        switch self {
+        case .post:
+            return [:]
+        case let .comments(id):
+            return ["search[post_id]": "\(id)"]
+        }
+    }
     
-    static func getPosts(completion: @escaping ([Product]) -> Void) {
+    func headers() -> [String: String] {
+        return ["Authorization": "Bearer 5591fd155cf2db08e3657d05d5775c4ccf7a9d6f71c60ddacdb9ea7d9c4b5f73"]
+    }
+    
+}
+
+class Networking {
+    
+    static let instance = Networking()
+    
+    let baseURL = "https://api.producthunt.com/v1"
+    let session = URLSession.shared
+    
+    
+    func fetch(route: Route,  completion: @escaping (Data) -> Void) {
+        let fullPath = baseURL.appending(route.path())
+        var url = URL(string: fullPath)!
+        url = url.appendingQueryParameters(route.urlParameters())
         
-         let date = Date()
-        
-        var productHuntUrl = URL(string: "https://api.producthunt.com/v1/posts")
-        
-        let urlParams = ["search[featured]": "True",
-                         "scope": "public",
-                         "created_at": String(describing: date),
-                         "per_page": "20"]
-        productHuntUrl?.appendingQueryParameters(urlParams)
-        
-        let dispatch = DispatchGroup()
-        
-        let session = URLSession.shared
-        
-        var request = URLRequest(url: productHuntUrl!)
+        var request = URLRequest(url: url)
+        request.allHTTPHeaderFields = route.headers()
         
         
-        
-        request.httpMethod = "GET"
-        
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer 5591fd155cf2db08e3657d05d5775c4ccf7a9d6f71c60ddacdb9ea7d9c4b5f73", forHTTPHeaderField: "Authorization")
-        request.setValue("api.producthunt.com", forHTTPHeaderField: "Host")
-        
-        var posts = [Product]()
-        
-        //dispatch.enter()
-        
-        session.dataTask(with: request) { (data, resp, err) in
+        session.dataTask(with: request) { (data, res, err) in
+            guard let data = data else {return}
             
-            if let data = data {
-                
-                let productHunt = try? JSONDecoder().decode(productList.self, from: data)
-                
-                let productHuntList = productHunt?.posts
-                
-                posts = productHuntList!
-                completion(posts)
-                  
-                //dispatch.leave()
-            } else {
-                //dispatch.leave()
-                fatalError("Networking failed")
-            }
-            
-        }.resume()
-        
-//        dispatch.notify(queue: .main, execute: {
-//
-//            completion(posts)
-//        })
-        
+            completion(data)
+        }
     }
     
 }
@@ -227,6 +164,20 @@ class Networking {
 extension URL {
     func appendingQueryParameters(_ parametersDictionary : Dictionary<String, String>) -> URL {
         let URLString : String = String(format: "%@?%@", self.absoluteString, parametersDictionary.queryParameters)
+        
+        
+        let net = Networking.instance
+        
+        net.fetch(route: Route.post) { (data) in
+            // Parsing
+        }
+        
+        net.fetch(route: Route.comments(id: "2")) { (data) in
+            // Parsing
+            let decoder =  JSONDecoder()
+            //decoder.decode(ProductList.self, from: <#T##Data#>)
+        }
+        
         return URL(string: URLString)!
     }
     // This is formatting the query parameters with an ascii table reference therefore we can be returned a json file

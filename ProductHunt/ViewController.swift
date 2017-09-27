@@ -27,12 +27,12 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         DispatchQueue.main.async {
-            Networking.getPosts(completion: { (products) in
-                
-                self.productHuntList = products
-                //print(self.productHuntList)
-                
-            })
+//            Networking.getPosts(completion: { (products) in
+//                
+//                self.productHuntList = products
+//                //print(self.productHuntList)
+//                
+//            })
         }
         
         

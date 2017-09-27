@@ -20,12 +20,12 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Networking.getComments(id: id!, completion: { (comments) in
-            print(comments)
-            self.comments = comments
-            self.commentsTableView.reloadData()
-        })
+//        
+//        Networking.getComments(id: id!, completion: { (comments) in
+//            print(comments)
+//            self.comments = comments
+//            self.commentsTableView.reloadData()
+//        })
 
         // Do any additional setup after loading the view.
     }
