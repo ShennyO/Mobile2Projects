@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5641ACF970D1F8657751C23A /* Pods_ProductHunt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3941A93D400E686A1045D173 /* Pods_ProductHunt.framework */; };
+		842B74A51F7C50F300B0D06D /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B74A41F7C50F300B0D06D /* Network.swift */; };
+		842B74A71F7C5FCD00B0D06D /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B74A61F7C5FCC00B0D06D /* Comments.swift */; };
+		842B74A91F7C600A00B0D06D /* Products.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842B74A81F7C600A00B0D06D /* Products.swift */; };
 		8497411F1F784CCC0063E2A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497411E1F784CCC0063E2A5 /* AppDelegate.swift */; };
 		849741211F784CCC0063E2A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849741201F784CCC0063E2A5 /* ViewController.swift */; };
 		849741241F784CCC0063E2A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849741221F784CCC0063E2A5 /* Main.storyboard */; };
@@ -15,7 +18,6 @@
 		849741291F784CCC0063E2A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849741271F784CCC0063E2A5 /* LaunchScreen.storyboard */; };
 		849741341F784CCC0063E2A5 /* ProductHuntTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849741331F784CCC0063E2A5 /* ProductHuntTests.swift */; };
 		8497413F1F784CCC0063E2A5 /* ProductHuntUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497413E1F784CCC0063E2A5 /* ProductHuntUITests.swift */; };
-		8497414D1F784D810063E2A5 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497414C1F784D810063E2A5 /* Networking.swift */; };
 		8497414F1F78B5440063E2A5 /* PHTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497414E1F78B5440063E2A5 /* PHTableViewCell.swift */; };
 		849741531F7AE98D0063E2A5 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849741521F7AE98D0063E2A5 /* DetailsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +43,9 @@
 		22B0EBCCB1F8340DED7262B1 /* Pods-ProductHunt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductHunt.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProductHunt/Pods-ProductHunt.release.xcconfig"; sourceTree = "<group>"; };
 		3941A93D400E686A1045D173 /* Pods_ProductHunt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProductHunt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		57F992C78A6F90C8F7DE2435 /* Pods-ProductHunt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductHunt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProductHunt/Pods-ProductHunt.debug.xcconfig"; sourceTree = "<group>"; };
+		842B74A41F7C50F300B0D06D /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		842B74A61F7C5FCC00B0D06D /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		842B74A81F7C600A00B0D06D /* Products.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Products.swift; sourceTree = "<group>"; };
 		8497411B1F784CCC0063E2A5 /* ProductHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProductHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8497411E1F784CCC0063E2A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		849741201F784CCC0063E2A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +59,6 @@
 		8497413A1F784CCC0063E2A5 /* ProductHuntUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProductHuntUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8497413E1F784CCC0063E2A5 /* ProductHuntUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductHuntUITests.swift; sourceTree = "<group>"; };
 		849741401F784CCC0063E2A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8497414C1F784D810063E2A5 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		8497414E1F78B5440063E2A5 /* PHTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PHTableViewCell.swift; sourceTree = "<group>"; };
 		849741521F7AE98D0063E2A5 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,8 +125,10 @@
 			children = (
 				8497411E1F784CCC0063E2A5 /* AppDelegate.swift */,
 				849741201F784CCC0063E2A5 /* ViewController.swift */,
-				8497414C1F784D810063E2A5 /* Networking.swift */,
 				849741521F7AE98D0063E2A5 /* DetailsViewController.swift */,
+				842B74A41F7C50F300B0D06D /* Network.swift */,
+				842B74A61F7C5FCC00B0D06D /* Comments.swift */,
+				842B74A81F7C600A00B0D06D /* Products.swift */,
 				8497414E1F78B5440063E2A5 /* PHTableViewCell.swift */,
 				849741221F784CCC0063E2A5 /* Main.storyboard */,
 				849741251F784CCC0063E2A5 /* Assets.xcassets */,
@@ -349,9 +355,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8497414D1F784D810063E2A5 /* Networking.swift in Sources */,
 				849741211F784CCC0063E2A5 /* ViewController.swift in Sources */,
+				842B74A51F7C50F300B0D06D /* Network.swift in Sources */,
+				842B74A71F7C5FCD00B0D06D /* Comments.swift in Sources */,
 				8497411F1F784CCC0063E2A5 /* AppDelegate.swift in Sources */,
+				842B74A91F7C600A00B0D06D /* Products.swift in Sources */,
 				8497414F1F78B5440063E2A5 /* PHTableViewCell.swift in Sources */,
 				849741531F7AE98D0063E2A5 /* DetailsViewController.swift in Sources */,
 			);

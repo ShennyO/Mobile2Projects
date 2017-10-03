@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ProductHunt/DetailsViewController.swift"
-            timestampString = "528161245.519152"
+            filePath = "ProductHunt/Network.swift"
+            timestampString = "528680229.251074"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "fetch(route:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,90 +25,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ProductHunt/DetailsViewController.swift"
-            timestampString = "528161245.51926"
+            filePath = "ProductHunt/ViewController.swift"
+            timestampString = "528680229.251171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProductHunt/DetailsViewController.swift"
-            timestampString = "528161245.519373"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "DetailsViewController"
-            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ProductHunt.DetailsViewController.comments.getter : Swift.Array&lt;ProductHunt.Comment&gt;"
+                  symbolName = "ProductHunt.ViewController.prepare(for: __ObjC.UIStoryboardSegue, sender: Swift.Optional&lt;Any&gt;) -&gt; ()"
                   moduleName = "ProductHunt"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shenny/Desktop/Mobile2Proj/ProductHunt/ProductHunt/DetailsViewController.swift"
-                  timestampString = "528161041.588367"
+                  urlString = "file:///Users/shenny/Desktop/ProductHunt/ProductHunt/ViewController.swift"
+                  timestampString = "528680109.504855"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "109">
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "1336">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ProductHunt.DetailsViewController.comments.setter : Swift.Array&lt;ProductHunt.Comment&gt;"
+                  symbolName = "ProductHunt.ViewController.prepare(for: __ObjC.UIStoryboardSegue, sender: Swift.Optional&lt;Any&gt;) -&gt; ()"
                   moduleName = "ProductHunt"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shenny/Desktop/Mobile2Proj/ProductHunt/ProductHunt/DetailsViewController.swift"
-                  timestampString = "528161041.59152"
+                  urlString = "file:///Users/shenny/Desktop/ProductHunt/ProductHunt/ViewController.swift"
+                  timestampString = "528680109.509389"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "112">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ProductHunt.DetailsViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; ProductHunt.DetailsViewController"
-                  moduleName = "ProductHunt"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shenny/Desktop/Mobile2Proj/ProductHunt/ProductHunt/DetailsViewController.swift"
-                  timestampString = "528161041.597617"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "209">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ProductHunt.DetailsViewController.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;ProductHunt.DetailsViewController&gt;"
-                  moduleName = "ProductHunt"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/shenny/Desktop/Mobile2Proj/ProductHunt/ProductHunt/DetailsViewController.swift"
-                  timestampString = "528161041.607784"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "16"
-                  endingLineNumber = "16"
-                  offsetFromSymbolStart = "146">
+                  startingLineNumber = "101"
+                  endingLineNumber = "101"
+                  offsetFromSymbolStart = "3651">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -120,12 +74,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ProductHunt/DetailsViewController.swift"
-            timestampString = "528161245.519493"
+            timestampString = "528680229.251255"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ProductHunt/Network.swift"
+            timestampString = "528680229.251344"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "Parameters()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

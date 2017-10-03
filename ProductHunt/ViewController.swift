@@ -19,6 +19,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.productsTableView.reloadData()
             }
+
         }
     }
     
@@ -26,14 +27,24 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        DispatchQueue.main.async {
-//            Networking.getPosts(completion: { (products) in
-//                
-//                self.productHuntList = products
-//                //print(self.productHuntList)
-//                
-//            })
+      
+        Network.instance.fetch(route: Route.post) { (allPosts) in
+            let productHunt = try? JSONDecoder().decode(ProductList.self, from: allPosts)
+            guard let newPosts = productHunt?.posts else{return}
+            self.productHuntList = newPosts
         }
+        
+//        DispatchQueue.main.async {
+//
+//            self.productsTableView.reloadData()
+//
+////            Networking.getPosts(completion: { (products) in
+////
+////                self.productHuntList = products
+////                //print(self.productHuntList)
+////
+////            })
+//        }
         
         
     }
@@ -69,6 +80,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let product = productHuntList[indexPath.row]
+//        let postID = product.id
+//        
+//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//        let detail = storyboard.instantiateViewController(withIdentifier: "DetailsVC") as! DetailsViewController
+//        detail.id = postID
+//        navigationController?.pushViewController(detail, animated: true)
+//        
+//    }
    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -77,7 +98,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 let cell = sender as! UITableViewCell
                 let indexPath = productsTableView.indexPath(for: cell)
                 let detailsVC = segue.destination as! DetailsViewController
-                detailsVC.id = self.productHuntList[(indexPath?.row)!].id!        
+                print(self.productHuntList[(indexPath?.row)!].id!)
+                detailsVC.id = self.productHuntList[(indexPath?.row)!].id!
+                print(self.productHuntList[(indexPath?.row)!].id!)
             }
         }
     }

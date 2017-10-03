@@ -13,19 +13,35 @@ class DetailsViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBOutlet weak var commentsTableView: UITableView!
     
-    var comments = [Comment]()
+    var comments = [Comment]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.commentsTableView.reloadData()
+            }
+        }
+    }
         
     
-    var id: Int?
+    var id: Int = 0
 
+    
+    //when we call the fetch request for the comments, we also need to pass the id of the cell we selected. We passed the id through the var id above. 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
-//        Networking.getComments(id: id!, completion: { (comments) in
-//            print(comments)
-//            self.comments = comments
-//            self.commentsTableView.reloadData()
-//        })
+//        print("id: \(self.id!)")
+
+        
+        let stringID = String(describing: id)
+        
+        Network.instance.fetch(route: Route.comments(id: String(describing: id))) { (data) in
+            //in here we want to populate our comments array above
+            let jsonComments = try? JSONDecoder().decode(commentList.self, from: data)
+            guard let commentList = jsonComments?.comments else {return}
+            self.comments = commentList
+            
+        }
+
 
         // Do any additional setup after loading the view.
     }
